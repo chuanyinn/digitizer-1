@@ -22,14 +22,14 @@ end TRIGMGR;
 
 architecture STRUCTURAL of TRIGMGR is
     component COINWIN is
-        generic(G_ADC_RES:      integer := 8
-                G_COINWIN_WDTH: integer := 8);
-        port(I_CLK:          std_logic;
-             I_RST:          std_logic;
-             I_COINWIN_WDTH: std_logic_vector((G_COINWIN_WDTH - 1) downto 0);
-             I_THRVAL:       std_logic_vector((G_ADC_RES - 1) downto 0);
-             I_ADC:          std_logic_vector((G_ADC_RES - 1) downto 0);
-             O_PULSE:        std_logic);
+        generic(G_ADC_RES:      integer;
+                G_COINWIN_WDTH: integer);
+        port(I_CLK:          in  std_logic;
+             I_RST:          in  std_logic;
+             I_COINWIN_WDTH: in  std_logic_vector((G_COINWIN_WDTH - 1) downto 0);
+             I_THRVAL:       in  std_logic_vector((G_ADC_RES - 1) downto 0);
+             I_ADC:          in  std_logic_vector((G_ADC_RES - 1) downto 0);
+             O_PULSE:        out std_logic);
     end component;
 
     component COINDETR is
@@ -43,7 +43,7 @@ architecture STRUCTURAL of TRIGMGR is
     end component;
 
     component TRIG is
-        generic(G_VETO_WDTH: integer := 8);
+        generic(G_VETO_WDTH: integer);
         port(I_CLK:       in  std_logic;
              I_RST:       in  std_logic;
              I_VETO_WDTH: in  std_logic_vector((G_VETO_WDTH - 1) downto 0);

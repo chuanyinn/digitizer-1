@@ -17,6 +17,14 @@ architecture STRUCTURAL of COINADD is
              O_C: out std_logic);
     end component;
 
+    component FADD is
+        port(I_L: in  std_logic;
+             I_M: in  std_logic;
+             I_N: in  std_logic;
+             O_O: out std_logic;
+             O_C: out std_logic);
+    end component;
+
     signal S_L: std_logic;
     signal S_M: std_logic;
     signal S_N: std_logic;

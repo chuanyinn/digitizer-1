@@ -11,10 +11,10 @@ end FADD;
 
 architecture STRUCTURAL of FADD is
     component HADD is
-        port(I_L: std_logic;
-             I_M: std_logic;
-             O_N: std_logic;
-             O_C: std_logic);
+        port(I_L: in  std_logic;
+             I_M: in  std_logic;
+             O_N: out std_logic;
+             O_C: out std_logic);
     end component;
 
     signal S_L: std_logic;
@@ -36,8 +36,8 @@ begin
                          O_N => S_HADD1_N,
                          O_C => S_HADD1_C);
 
-    HADD2: HADD port map(I_L => S_N,
-                         I_M => S_HADD1_N,
+    HADD2: HADD port map(I_L => S_HADD1_N,
+                         I_M => S_N,
                          O_N => S_O,
                          O_C => S_HADD2_C);
 

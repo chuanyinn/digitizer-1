@@ -2,7 +2,7 @@ library ieee;
 use ieee.std_logic_1164.all;
 
 library machxo2;
-machxo2.components.all;
+use machxo2.components.all;
 
 entity COINDETR is
     port(I_CLK:         in  std_logic;
@@ -62,17 +62,17 @@ begin
                                   I_O => S_COINWIN_CH4,
                                   O_P => S_COINWIN_ADD);
 
-    DTFF_NCOIN_2: FD1S3AX generic map(GSR => "ENABLED")
+    DTFF_2: FD1S3AX generic map(GSR => "ENABLED")
                           port map(CK => S_CLK,
                                    D  => S_COINWIN_ADD(2),
                                    Q  => S_NCOIN(2));
 
-    DTFF_NCOIN_1: FD1S3AX generic map(GSR => "ENABLED")
+    DTFF_1: FD1S3AX generic map(GSR => "ENABLED")
                           port map(CK => S_CLK,
                                    D  => S_COINWIN_ADD(1),
                                    Q  => S_NCOIN(1));
 
-    DTFF_NCOIN_0: FD1S3AX generic map(GSR => "ENABLED")
+    DTFF_0: FD1S3AX generic map(GSR => "ENABLED")
                           port map(CK => S_CLK,
                                    D  => S_COINWIN_ADD(0),
                                    Q  => S_NCOIN(0));

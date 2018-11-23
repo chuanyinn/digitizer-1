@@ -144,8 +144,8 @@ begin
     PLL: EHXPLLJ generic map(CLKI_DIV => 2,
 
                              -- Clock OP --
-                             CLKOP_ENABLE => "Enabled",
-                             VCO_BYPASS_A0 => "Disabled",
+                             CLKOP_ENABLE => "ENABLED",
+                             VCO_BYPASS_A0 => "DISABLED",
                              PREDIVIDER_MUXA1 => 0,
                              CLKOP_DIV => 42,
                              CLKOP_CPHASE => 41,
@@ -156,7 +156,7 @@ begin
 
                              -- Clock OS --
                              CLKOS_ENABLE => "DISABLED",
-                             VCO_BYPASS_B0 => "Disabled",
+                             VCO_BYPASS_B0 => "DISABLED",
                              PREDIVIDER_MUXB1 => 0,
                              CLKOS_DIV => 42,
                              CLKOS_CPHASE => 41,
@@ -166,8 +166,8 @@ begin
                              OUTDIVIDER_MUXB2 => "DIVB",
 
                              -- Clock OS 2 --
-                             CLKOS2_ENABLE => "Disabled",
-                             VCO_BYPASS_C0 => "Disabled",
+                             CLKOS2_ENABLE => "DISABLED",
+                             VCO_BYPASS_C0 => "DISABLED",
                              PREDIVIDER_MUXC1 => 0,
                              CLKOS2_DIV => 42,
                              CLKOS2_CPHASE => 41,
@@ -175,8 +175,8 @@ begin
                              OUTDIVIDER_MUXC2 => "DIVC",
 
                              -- Clock OS 3 --
-                             CLKOS3_Enable => "Disabled",
-                             VCO_BYPASS_D0 => "Disabled",
+                             CLKOS3_Enable => "DISABLED",
+                             VCO_BYPASS_D0 => "DISABLED",
                              PREDIVIDER_MUXD1 => 0,
                              CLKOS3_DIV => 42,
                              CLKOS3_CPHASE => 41,
@@ -186,24 +186,24 @@ begin
                              -- Feedback Clock --
                              FEEDBK_PATH => "CLKOP",
                              CLKFB_DIV => 1,
-                             INTFB_WAKE => "Disabled",
+                             INTFB_WAKE => "DISABLED",
 
                              -- Frac N Synthesizer --
-                             FRACN_ENABLE => "Disabled",
+                             FRACN_ENABLE => "DISABLED",
                              FRACN_DIV => 0,
 
                              -- PLL Lock --
                              PLL_LOCK_MODE => 0,
 
                              -- Reset Enables --
-                             PLLRST_ENA => "Disabled",
-                             MRST_ENA => "Disabled",
-                             DCRST_ENA => "Disabled",
-                             DDRST_ENA => "Disabled",
+                             PLLRST_ENA => "DISABLED",
+                             MRST_ENA => "DISABLED",
+                             DCRST_ENA => "DISABLED",
+                             DDRST_ENA => "DISABLED",
 
                              -- Not sure what these do yet? --
-                             STDBY_ENABLE => "Disabled",
-                             DPHASE_SOURCE => "Disabled")
+                             STDBY_ENABLE => "DISABLED",
+                             DPHASE_SOURCE => "DISABLED")
                  port map(CLKI        => S_I_CLK,
                           CLKFB       => S_O_CLK,
                           PHASESEL1   => '0',
@@ -242,7 +242,7 @@ begin
                           CLKOS       => open,
                           CLKOS2      => open,
                           CLKOS3      => open,
-                          LOCK        => O_LOCK,
+                          LOCK        => S_LOCK,
                           INTLOCK     => open,
                           REFCLK      => open,
                           DPHSRC      => open,

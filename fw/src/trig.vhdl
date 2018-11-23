@@ -13,14 +13,14 @@ end TRIG;
 architecture STRUCTURAL of TRIG is
     component FD1S3IX is
         generic(GSR: string);
-        port(CK: in  std_logic
-             CD: in  std_logic
-             D:  in  std_logic
+        port(CK: in  std_logic;
+             CD: in  std_logic;
+             D:  in  std_logic;
              Q:  out std_logic);
     end component;
 
     component PULSEGEN is
-        generic(G_WDTH: integer := 8);
+        generic(G_WDTH: integer);
         port(I_CLK:   in  std_logic;
              I_RST:   in  std_logic;
              I_WDTH:  in  std_logic_vector((G_WDTH - 1) downto 0);
@@ -50,12 +50,12 @@ begin
                               D  => S_IS_TRIG,
                               Q  => S_PULSE);
 
-    VETOWIN: PULSEGENERATOR generic map(G_WDTH => G_VETO_WDTH);
-                            port map(I_CLK   => S_CLK,
-                                     I_RST   => S_RST,
-                                     I_WDTH  => S_VETO_WDTH,
-                                     I_SIG   => S_IS_TRIG,
-                                     O_PULSE => S_IS_VETO);
+    VETOWIN: PULSEGEN generic map(G_WDTH => G_VETO_WDTH)
+                      port map(I_CLK   => S_CLK,
+                               I_RST   => S_RST,
+                               I_WDTH  => S_VETO_WDTH,
+                               I_TRIG  => S_IS_TRIG,
+                               O_PULSE => S_IS_VETO);
 
     O_PULSE <= S_PULSE;
 end STRUCTURAL;

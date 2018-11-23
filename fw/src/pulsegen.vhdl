@@ -27,6 +27,7 @@ architecture STRUCTURAL of PULSEGEN is
     signal S_TRIG:  std_logic;
     signal S_PULSE: std_logic;
 
+    signal S_EN_PULSE:          std_logic;
     signal S_PULSEGEN_CNTR_VAL: std_logic_vector((G_WDTH - 1) downto 0);
 
     constant C_ZEROES: std_logic_vector((G_WDTH - 1) downto 0) := (others => '0');
@@ -37,12 +38,12 @@ begin
     S_TRIG <= I_TRIG;
 
     PLSEGEN: DCNT generic map(G_WDTH => G_WDTH)
-                  port map(I_CLK  => S_CLK,
-                           I_RST  => S_RST,
-                           I_LD   => S_TRIG,
-                           I_EN   => S_PULSE,
-                           I_VAL  => S_WDTH,
-                           O_DATA => S_PULSEGEN_CNTR_VAL);
+                  port map(I_CLK => S_CLK,
+                           I_RST => S_RST,
+                           I_LD  => S_TRIG,
+                           I_EN  => S_PULSE,
+                           I_VAL => S_WDTH,
+                           O_CNT => S_PULSEGEN_CNTR_VAL);
 
     S_PULSE <= '1' when (S_PULSEGEN_CNTR_VAL /= C_ZEROES) else '0';
 
